@@ -3,15 +3,17 @@
   "TargetRepo": "",
   "TargetGH": false,
   "TargetAPI": "https://down.7086.in/x265-Yuuki-Asuna",
-  "TargetDLink": "https://down.7086.in/x265-Yuuki-Asuna",
+  "TargetDLink": "https://down.7086.in/x265-Yuuki-Asuna/x265-Yuuki-3.4+1-g07e3381df+31.7z",
   "ArchiverOwner": "One-Studio",
   "ArchiverRepo": "x265-Yuuki",
   "ArchiverGH": true,
   "ArchiverAPI": "",
   "ArchiverVersion": "v1.2.1",
-  "Version": "",
-  "VersionList": [],
-  "CheckTime": "",
+  "Version": "3.4+1-g07e3381df+31",
+  "VersionList": [
+    "3.4+1-g07e3381df+31"
+  ],
+  "CheckTime": "2020-11-20T02:55Z",
   "Format": 1,
   "CompRatio": 3,
   "DistPath": "dist",
@@ -21,9 +23,9 @@
   ],
   "DeleteFilter": [],
   "RenameFilter": [
-	  {
-		  "Index": "x265",
-		  "Name": "x265-Yuuki.7z"
-	  }
+    {
+      "Index": "x265",
+      "Name": "x265-Yuuki.7z"
+    }
   ]
 }

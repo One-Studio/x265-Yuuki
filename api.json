@@ -1,9 +1,13 @@
 {
-  "Version": "",
-  "VersionList": [],
+  "Version": "3.4+1-g07e3381df+31",
+  "VersionList": [
+    "3.4+1-g07e3381df+31"
+  ],
   "ReleaseTime": "",
-  "CheckTime": "",
-  "DownloadLink": [],
+  "CheckTime": "2020-11-20T02:55Z",
+  "DownloadLink": [
+    "https://cdn.jsdelivr.net/gh/One-Studio/x265-Yuuki@master/dist/x265-Yuuki.7z"
+  ],
   "Format": 1,
   "ReleaseNote": ""
 }
