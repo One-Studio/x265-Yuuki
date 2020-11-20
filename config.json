@@ -1,0 +1,29 @@
+{
+  "TargetOwner": "",
+  "TargetRepo": "",
+  "TargetGH": false,
+  "TargetAPI": "https://down.7086.in/x265-Yuuki-Asuna",
+  "TargetDLink": "https://down.7086.in/x265-Yuuki-Asuna",
+  "ArchiverOwner": "One-Studio",
+  "ArchiverRepo": "x265-Yuuki",
+  "ArchiverGH": true,
+  "ArchiverAPI": "",
+  "ArchiverVersion": "v1.2.1",
+  "Version": "",
+  "VersionList": [],
+  "CheckTime": "",
+  "Format": 1,
+  "CompRatio": 3,
+  "DistPath": "dist",
+  "Filter": [
+    ".zip",
+    ".exe"
+  ],
+  "DeleteFilter": [],
+  "RenameFilter": [
+	  {
+		  "Index": "x265",
+		  "Name": "x265-Yuuki.7z"
+	  }
+  ]
+}

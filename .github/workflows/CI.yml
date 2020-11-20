@@ -1,0 +1,84 @@
+name: release CI
+
+on:
+  # Push激活，去掉#开启
+  push:
+  # 定时激活
+  schedule:
+    - cron:  '* 5 * * *'
+      # 每30分钟：'30 * * * *'
+      # 每1小时：'* 1 * * *'
+      # ！最少5分钟
+  # 接受目标仓库的dispatch激活
+  repository_dispatch:
+    types: [do_archive]
+
+jobs:
+  transport:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # 运行工具
+      - name: Run ReleaseDelivr
+        run: |
+          ls
+          chmod 777 ReleaseDelivr
+          ./ReleaseDelivr
+          ls
+
+      # 读取最新版本号
+      - name: Read target version
+        id: tVer
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./version
+
+      # 读取旧版本号
+      - name: Read current version
+        id: cVer
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./old_version
+
+      - run: |
+          echo "tVer=${{ steps.tVer.outputs.content }}" >> $GITHUB_ENV
+          echo "cVer=${{ steps.cVer.outputs.content }}" >> $GITHUB_ENV
+
+      - name: push
+        if: env.cVer != env.tVer
+        uses: github-actions-x/commit@v2.6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: master
+          commit-message: 'Automatically pushed by GitHub Actions'
+          rebase: 'true' # pull abd rebase before commit
+          force-add: 'true'
+          # ！请替换
+          name: Purple-CSGO
+          email: 438518244@qq.com
+
+      # 等待10s 以防先发布再push
+      - name: Sleep for 10 seconds
+        if: env.cVer != env.tVer
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '10s'
+
+      # 读取下载地址
+      - name: Read DownloadLink
+        if: env.cVer != env.tVer
+        id: downloadlink
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./download_link
+
+      # 运行工具
+      - name: Github Release create, update, and upload assets
+        if: env.cVer != env.tVer
+        uses: meeDamian/github-release@v2.0.3
+        with:
+          token:  ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.tVer.outputs.content }}
+          name: ${{ steps.tVer.outputs.content }}
+          body: 下载链接：</br>${{ steps.downloadlink.outputs.content }}
