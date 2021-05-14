@@ -2,10 +2,10 @@ name: release CI
 
 on:
   # Push激活，去掉#开启
-  # push:
+  push:
   # 定时激活
   schedule:
-    - cron:  '* 12 * * *'
+    - cron:  '59 * * * *'
       # 每30分钟：'30 * * * *'
       # 每1小时：'* 1 * * *'
       # ！最少5分钟
