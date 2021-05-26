@@ -33,6 +33,7 @@ jobs:
         uses: juliangruber/read-file-action@v1
         with:
           path: ./version
+          trim: false
 
       # 读取旧版本号
       - name: Read current version
@@ -40,6 +41,7 @@ jobs:
         uses: juliangruber/read-file-action@v1
         with:
           path: ./old_version
+          trim: false
 
       - run: |
           echo "tVer=${{ steps.tVer.outputs.content }}" >> $GITHUB_ENV
